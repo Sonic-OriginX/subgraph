@@ -81,7 +81,7 @@ const stakingEvents = [
   });
 });
 
-ponder.on("OriginXServiceManager:OriginXTaskResponded", async ({ event, context }) => {
+ponder.on("OriginXServiceManager:OriginTaskResponded", async ({ event, context }) => {
   await handleEvent(OriginXTaskResponded, event, context, {
     taskIndex: event.args.taskIndex,
     task_accountAddress: event.args.task.accountAddress,

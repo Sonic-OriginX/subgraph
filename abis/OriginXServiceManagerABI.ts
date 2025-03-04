@@ -1,7 +1,11 @@
 export const OriginXServiceManagerABI = [
   {
     "inputs": [
-      { "internalType": "address", "name": "_avsDirectory", "type": "address" },
+      {
+        "internalType": "address",
+        "name": "_avsDirectory",
+        "type": "address"
+      },
       {
         "internalType": "address",
         "name": "_stakeRegistry",
@@ -38,54 +42,6 @@ export const OriginXServiceManagerABI = [
       }
     ],
     "name": "Debug",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "uint32",
-        "name": "taskIndex",
-        "type": "uint32"
-      },
-      {
-        "components": [
-          {
-            "internalType": "address",
-            "name": "accountAddress",
-            "type": "address"
-          },
-          {
-            "internalType": "string",
-            "name": "stakingAddress",
-            "type": "string"
-          },
-          {
-            "internalType": "uint32",
-            "name": "taskCreatedBlock",
-            "type": "uint32"
-          }
-        ],
-        "indexed": false,
-        "internalType": "struct IOriginXFiServiceManager.OriginXTask",
-        "name": "task",
-        "type": "tuple"
-      },
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "operator",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "bytes",
-        "name": "signature",
-        "type": "bytes"
-      }
-    ],
-    "name": "OriginXTaskResponded",
     "type": "event"
   },
   {
@@ -129,12 +85,60 @@ export const OriginXServiceManagerABI = [
           }
         ],
         "indexed": false,
-        "internalType": "struct IOriginXFiServiceManager.OriginXTask",
+        "internalType": "struct IOriginXServiceManager.OriginTask",
         "name": "task",
         "type": "tuple"
       }
     ],
-    "name": "NewOriginXTaskCreated",
+    "name": "NewOriginTaskCreated",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "uint32",
+        "name": "taskIndex",
+        "type": "uint32"
+      },
+      {
+        "components": [
+          {
+            "internalType": "address",
+            "name": "accountAddress",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "stakingAddress",
+            "type": "string"
+          },
+          {
+            "internalType": "uint32",
+            "name": "taskCreatedBlock",
+            "type": "uint32"
+          }
+        ],
+        "indexed": false,
+        "internalType": "struct IOriginXServiceManager.OriginTask",
+        "name": "task",
+        "type": "tuple"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "operator",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes",
+        "name": "signature",
+        "type": "bytes"
+      }
+    ],
+    "name": "OriginTaskResponded",
     "type": "event"
   },
   {
@@ -178,31 +182,69 @@ export const OriginXServiceManagerABI = [
   {
     "inputs": [],
     "name": "OWNER_ADDRESS",
-    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [{ "internalType": "uint32", "name": "", "type": "uint32" }],
-    "name": "allTaskHashes",
-    "outputs": [{ "internalType": "bytes32", "name": "", "type": "bytes32" }],
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
     "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [
-      { "internalType": "address", "name": "", "type": "address" },
-      { "internalType": "uint32", "name": "", "type": "uint32" }
+      {
+        "internalType": "uint32",
+        "name": "",
+        "type": "uint32"
+      }
+    ],
+    "name": "allTaskHashes",
+    "outputs": [
+      {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      },
+      {
+        "internalType": "uint32",
+        "name": "",
+        "type": "uint32"
+      }
     ],
     "name": "allTaskResponses",
-    "outputs": [{ "internalType": "bytes", "name": "", "type": "bytes" }],
+    "outputs": [
+      {
+        "internalType": "bytes",
+        "name": "",
+        "type": "bytes"
+      }
+    ],
     "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [],
     "name": "avsDirectory",
-    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
     "stateMutability": "view",
     "type": "function"
   },
@@ -232,13 +274,21 @@ export const OriginXServiceManagerABI = [
             "name": "token",
             "type": "address"
           },
-          { "internalType": "uint256", "name": "amount", "type": "uint256" },
+          {
+            "internalType": "uint256",
+            "name": "amount",
+            "type": "uint256"
+          },
           {
             "internalType": "uint32",
             "name": "startTimestamp",
             "type": "uint32"
           },
-          { "internalType": "uint32", "name": "duration", "type": "uint32" }
+          {
+            "internalType": "uint32",
+            "name": "duration",
+            "type": "uint32"
+          }
         ],
         "internalType": "struct IRewardsCoordinator.RewardsSubmission[]",
         "name": "rewardsSubmissions",
@@ -252,7 +302,11 @@ export const OriginXServiceManagerABI = [
   },
   {
     "inputs": [
-      { "internalType": "address", "name": "operator", "type": "address" }
+      {
+        "internalType": "address",
+        "name": "operator",
+        "type": "address"
+      }
     ],
     "name": "deregisterOperatorFromAVS",
     "outputs": [],
@@ -261,11 +315,19 @@ export const OriginXServiceManagerABI = [
   },
   {
     "inputs": [
-      { "internalType": "address", "name": "_operator", "type": "address" }
+      {
+        "internalType": "address",
+        "name": "_operator",
+        "type": "address"
+      }
     ],
     "name": "getOperatorRestakedStrategies",
     "outputs": [
-      { "internalType": "address[]", "name": "", "type": "address[]" }
+      {
+        "internalType": "address[]",
+        "name": "",
+        "type": "address[]"
+      }
     ],
     "stateMutability": "view",
     "type": "function"
@@ -274,7 +336,11 @@ export const OriginXServiceManagerABI = [
     "inputs": [],
     "name": "getRestakeableStrategies",
     "outputs": [
-      { "internalType": "address[]", "name": "", "type": "address[]" }
+      {
+        "internalType": "address[]",
+        "name": "",
+        "type": "address[]"
+      }
     ],
     "stateMutability": "view",
     "type": "function"
@@ -282,25 +348,53 @@ export const OriginXServiceManagerABI = [
   {
     "inputs": [],
     "name": "latestTaskNum",
-    "outputs": [{ "internalType": "uint32", "name": "", "type": "uint32" }],
+    "outputs": [
+      {
+        "internalType": "uint32",
+        "name": "",
+        "type": "uint32"
+      }
+    ],
     "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [],
     "name": "owner",
-    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
     "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [
-      { "internalType": "address", "name": "operator", "type": "address" },
+      {
+        "internalType": "address",
+        "name": "operator",
+        "type": "address"
+      },
       {
         "components": [
-          { "internalType": "bytes", "name": "signature", "type": "bytes" },
-          { "internalType": "bytes32", "name": "salt", "type": "bytes32" },
-          { "internalType": "uint256", "name": "expiry", "type": "uint256" }
+          {
+            "internalType": "bytes",
+            "name": "signature",
+            "type": "bytes"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "salt",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "uint256",
+            "name": "expiry",
+            "type": "uint256"
+          }
         ],
         "internalType": "struct ISignatureUtils.SignatureWithSaltAndExpiry",
         "name": "operatorSignature",
@@ -339,7 +433,7 @@ export const OriginXServiceManagerABI = [
             "type": "uint32"
           }
         ],
-        "internalType": "struct IOriginXFiServiceManager.OriginXTask",
+        "internalType": "struct IOriginXServiceManager.OriginTask",
         "name": "task",
         "type": "tuple"
       },
@@ -348,7 +442,11 @@ export const OriginXServiceManagerABI = [
         "name": "referenceTaskIndex",
         "type": "uint32"
       },
-      { "internalType": "bytes", "name": "signature", "type": "bytes" },
+      {
+        "internalType": "bytes",
+        "name": "signature",
+        "type": "bytes"
+      },
       {
         "components": [
           {
@@ -363,7 +461,11 @@ export const OriginXServiceManagerABI = [
                 "name": "parameters",
                 "type": "string"
               },
-              { "internalType": "string", "name": "context", "type": "string" }
+              {
+                "internalType": "string",
+                "name": "context",
+                "type": "string"
+              }
             ],
             "internalType": "struct Claims.ClaimInfo",
             "name": "claimInfo",
@@ -422,7 +524,13 @@ export const OriginXServiceManagerABI = [
   {
     "inputs": [],
     "name": "rewardsInitiator",
-    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
     "stateMutability": "view",
     "type": "function"
   },
@@ -442,13 +550,23 @@ export const OriginXServiceManagerABI = [
   {
     "inputs": [],
     "name": "stakeRegistry",
-    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
     "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [
-      { "internalType": "string", "name": "stakingAddress", "type": "string" }
+      {
+        "internalType": "string",
+        "name": "stakingAddress",
+        "type": "string"
+      }
     ],
     "name": "taskAgent",
     "outputs": [
@@ -470,7 +588,7 @@ export const OriginXServiceManagerABI = [
             "type": "uint32"
           }
         ],
-        "internalType": "struct IOriginXFiServiceManager.OriginXTask",
+        "internalType": "struct IOriginXServiceManager.OriginTask",
         "name": "",
         "type": "tuple"
       }
@@ -480,7 +598,11 @@ export const OriginXServiceManagerABI = [
   },
   {
     "inputs": [
-      { "internalType": "address", "name": "newOwner", "type": "address" }
+      {
+        "internalType": "address",
+        "name": "newOwner",
+        "type": "address"
+      }
     ],
     "name": "transferOwnership",
     "outputs": [],
@@ -489,7 +611,11 @@ export const OriginXServiceManagerABI = [
   },
   {
     "inputs": [
-      { "internalType": "string", "name": "_metadataURI", "type": "string" }
+      {
+        "internalType": "string",
+        "name": "_metadataURI",
+        "type": "string"
+      }
     ],
     "name": "updateAVSMetadataURI",
     "outputs": [],
@@ -497,9 +623,21 @@ export const OriginXServiceManagerABI = [
     "type": "function"
   },
   {
-    "inputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
     "name": "userChannelID",
-    "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
     "stateMutability": "view",
     "type": "function"
   }

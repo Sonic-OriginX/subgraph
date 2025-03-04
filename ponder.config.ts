@@ -83,7 +83,7 @@ export default createConfig({
     OriginXServiceManager: {
       network: "sonicBlazeTestnet",
       abi: OriginXServiceManagerABI,
-      address: "0x",
+      address: "0x237d243654e4cc945c178a2f4d96efe4939281f2",
       startBlock: 24401825,
     },
   },

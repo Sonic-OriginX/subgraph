@@ -1,5 +1,5 @@
 import { ponder } from "ponder:registry";
-
+import { createHash, randomBytes } from "crypto";
 import {
   Deposit,
   Approval,
@@ -10,8 +10,18 @@ import {
 } from "ponder:schema";
 
 const handleEvent = async (table: any, event: any, context: any, extraValues = {}) => {
+  const randomValue = randomBytes(16).toString("hex");
+  const id = createHash("sha256")
+    .update(`
+      ${event.transaction.hash}
+      -${event.block.number}
+      -${event.block.timestamp}
+      -${randomValue}
+      `.trim())
+    .digest("hex");
+
   await context.db.insert(table).values({
-    id: event.transaction.hash,
+    id: id,
     blockNumber: event.block.number,
     blockTimestamp: event.block.timestamp,
     transactionHash: event.transaction.hash,

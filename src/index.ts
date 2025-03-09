@@ -6,7 +6,12 @@ import {
   Swap,
   Transfer,
   Withdrawal,
-  OriginXTaskResponded
+  OriginXTaskResponded,
+  APYUpdated,
+  EmergencyWithdraw,
+  PartialWithdraw,
+  Staked,
+  WithdrawAll,
 } from "ponder:schema";
 
 const handleEvent = async (table: any, event: any, context: any, extraValues = {}) => {
@@ -54,6 +59,14 @@ ponder.on("OriginX:Withdrawal", async ({ event, context }) => {
   });
 });
 
+const eventToTableMap: Record<string, any> = {
+  APYUpdated: APYUpdated,
+  EmergencyWithdraw: EmergencyWithdraw,
+  PartialWithdraw: PartialWithdraw,
+  Staked: Staked,
+  WithdrawAll: WithdrawAll,
+};
+
 const stakingEvents = [
   "APYUpdated", "EmergencyWithdraw", "PartialWithdraw", "Staked", "WithdrawAll"
 ] as const;
@@ -61,7 +74,12 @@ const stakingEvents = [
 (["EulerV2", "Lombard Finance", "SiloV2", "SpectraV2", "Origin Protocol"] as const).forEach(contract => {
   stakingEvents.forEach(eventName => {
     ponder.on(`${contract}:${eventName}`, async ({ event, context }) => {
-      await handleEvent(eval(eventName), event, context, {
+      const table = eventToTableMap[eventName];
+      if (!table) {
+        console.error(`Table not found for event: ${eventName}`);
+        return;
+      }
+      await handleEvent(table, event, context, {
         ...('withdrawer' in event.args && { withdrawer: event.args.withdrawer }),
         ...('staker' in event.args && { staker: event.args.staker }),
         ...('amount' in event.args && { amount: event.args.amount }),

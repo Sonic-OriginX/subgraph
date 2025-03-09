@@ -1,8 +1,16 @@
 export const MockStakingABI = [
   {
     "inputs": [
-      { "internalType": "address", "name": "_mockUNI", "type": "address" },
-      { "internalType": "uint8", "name": "_fixedAPY", "type": "uint8" },
+      {
+        "internalType": "address",
+        "name": "_mockUSDCe",
+        "type": "address"
+      },
+      {
+        "internalType": "uint8",
+        "name": "_fixedAPY",
+        "type": "uint8"
+      },
       {
         "internalType": "uint256",
         "name": "_durationInDays",
@@ -121,13 +129,23 @@ export const MockStakingABI = [
   {
     "inputs": [],
     "name": "durationInDays",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
     "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [
-      { "internalType": "uint256", "name": "_amount", "type": "uint256" }
+      {
+        "internalType": "uint256",
+        "name": "_amount",
+        "type": "uint256"
+      }
     ],
     "name": "emergencyWithdraw",
     "outputs": [],
@@ -137,38 +155,70 @@ export const MockStakingABI = [
   {
     "inputs": [],
     "name": "fixedAPY",
-    "outputs": [{ "internalType": "uint8", "name": "", "type": "uint8" }],
+    "outputs": [
+      {
+        "internalType": "uint8",
+        "name": "",
+        "type": "uint8"
+      }
+    ],
     "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [
-      { "internalType": "address", "name": "_user", "type": "address" }
+      {
+        "internalType": "address",
+        "name": "_user",
+        "type": "address"
+      }
     ],
     "name": "getAmountStakeByUser",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
     "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [],
     "name": "getMyStakedAmount",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
     "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [],
     "name": "maxAmountStaked",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
     "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [],
-    "name": "mockUNI",
+    "name": "mockUSDCe",
     "outputs": [
-      { "internalType": "contract IERC20", "name": "", "type": "address" }
+      {
+        "internalType": "contract IERC20",
+        "name": "",
+        "type": "address"
+      }
     ],
     "stateMutability": "view",
     "type": "function"
@@ -176,12 +226,24 @@ export const MockStakingABI = [
   {
     "inputs": [],
     "name": "owner",
-    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
     "stateMutability": "view",
     "type": "function"
   },
   {
-    "inputs": [{ "internalType": "uint8", "name": "_newAPY", "type": "uint8" }],
+    "inputs": [
+      {
+        "internalType": "uint8",
+        "name": "_newAPY",
+        "type": "uint8"
+      }
+    ],
     "name": "setAPY",
     "outputs": [],
     "stateMutability": "nonpayable",
@@ -189,8 +251,16 @@ export const MockStakingABI = [
   },
   {
     "inputs": [
-      { "internalType": "uint256", "name": "_days", "type": "uint256" },
-      { "internalType": "uint256", "name": "_amount", "type": "uint256" }
+      {
+        "internalType": "uint256",
+        "name": "_days",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_amount",
+        "type": "uint256"
+      }
     ],
     "name": "stake",
     "outputs": [],
@@ -198,17 +268,35 @@ export const MockStakingABI = [
     "type": "function"
   },
   {
-    "inputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
     "name": "stakes",
     "outputs": [
-      { "internalType": "uint256", "name": "amountStaked", "type": "uint256" },
-      { "internalType": "uint256", "name": "numberOfDays", "type": "uint256" },
+      {
+        "internalType": "uint256",
+        "name": "amountStaked",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "numberOfDays",
+        "type": "uint256"
+      },
       {
         "internalType": "uint256",
         "name": "registrationTimestamp",
         "type": "uint256"
       },
-      { "internalType": "bool", "name": "isValid", "type": "bool" }
+      {
+        "internalType": "bool",
+        "name": "isValid",
+        "type": "bool"
+      }
     ],
     "stateMutability": "view",
     "type": "function"
@@ -216,20 +304,36 @@ export const MockStakingABI = [
   {
     "inputs": [],
     "name": "startStake",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
     "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [],
     "name": "totalAmountStaked",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
     "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [
-      { "internalType": "uint256", "name": "_amount", "type": "uint256" }
+      {
+        "internalType": "uint256",
+        "name": "_amount",
+        "type": "uint256"
+      }
     ],
     "name": "withdraw",
     "outputs": [],
@@ -250,5 +354,8 @@ export const MockStakingABI = [
     "stateMutability": "nonpayable",
     "type": "function"
   },
-  { "stateMutability": "payable", "type": "receive" }
+  {
+    "stateMutability": "payable",
+    "type": "receive"
+  }
 ] as const;

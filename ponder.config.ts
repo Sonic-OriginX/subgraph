@@ -7,6 +7,10 @@ import { MockTokenABI } from "./abis/MockTokenABI";
 import { OriginXServiceManagerABI } from "./abis/OriginXServiceManagerABI";
 
 export default createConfig({
+  database: {
+    kind: "postgres",
+    connectionString: process.env.PONDER_DATABASE_URL,
+  },
   networks: {
     sonicBlazeTestnet: {
       chainId: 57054,
